@@ -8,9 +8,6 @@ while True:
         continue
     new_frame = cv2.GaussianBlur(orig_frame, (5, 5), 0)
     gray= cv2.cvtColor(new_frame, cv2.COLOR_BGR2GRAY)
-    #low_white = np.array([0,0,0])
-    #high_white = np.array([255, 255, 255])
-    #mask = cv2.inRange(gray, low_white, high_white)
     edges = cv2.Canny(gray, 75, 150)
     lines = cv2.HoughLinesP(edges, 1, np.pi/180, 50, maxLineGap=50)
     if lines is not None:
